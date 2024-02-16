@@ -27,14 +27,14 @@ import Header from './Hook/Header';
       </div>
     </div>
   );
-}*/
+}
+*/
 
 // =============Movies End============
 
 // =============Hook Start============
 
-/*
-function App() {
+/*function App() {
   const [num, setNum] = useState(1);
 
   function incre() {
@@ -65,9 +65,9 @@ function App() {
     </div>
   </>);
 
-}*/
+}
+*/
 // =============Hook Project Start============
-
 
 function App() {
   return (
@@ -77,4 +77,5 @@ function App() {
     </>
   )
 }
+// =============Hook Project Start============
 export default App;
