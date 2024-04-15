@@ -1,12 +1,11 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-// import './App.css'
+import Butten from "./Butten";
 
-import React from "react";
-
-export default class App extends React.Component {
-  render() {
-    return <div>hy i am class based component</div>;
-  }
-}
+let App = () => {
+  return (
+    <>
+      <h1>hy</h1>
+      <Butten />
+    </>
+  );
+};
+export default App;
