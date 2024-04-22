@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import ShowPasswors from "./components/ShowPasswors";
 import Range from "./components/Range";
 import Number from "./components/Number";
@@ -10,6 +10,7 @@ function App() {
   const [numberAllow, setNumberAllow] = useState(false);
   const [charAllow, setcharAllow] = useState(false);
   const [password, setpassword] = useState("");
+  const passwordref = useRef("");
 
   const passwordGeneratore = useCallback(() => {
     let pass = "";
@@ -30,6 +31,13 @@ function App() {
     passwordGeneratore();
   }, [length, numberAllow, charAllow]);
 
+  const copyPassToClipboard = useCallback(() => {
+    passwordref.current?.select();
+    passwordref.current?.setSelectionRange(0, 5);
+
+    window.navigator.clipboard.writeText(password);
+  }, [password]);
+
   const setRange = (e) => {
     setLength(e.target.value);
   };
@@ -45,7 +53,11 @@ function App() {
   return (
     <>
       <Container>
-        <ShowPasswors password={password}></ShowPasswors>
+        <ShowPasswors
+          password={password}
+          passwordref={passwordref}
+          copyPassToClipboard={copyPassToClipboard}
+        ></ShowPasswors>
 
         <div className="text-center">
           <Range length={length} setRange={setRange}></Range>

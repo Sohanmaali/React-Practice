@@ -1,6 +1,6 @@
 import React from "react";
 
-const ShowPasswors = ({ password }) => {
+const ShowPasswors = ({ password, passwordref, copyPassToClipboard }) => {
   return (
     <>
       <div className="input-group mt-3 mb-5">
@@ -11,9 +11,14 @@ const ShowPasswors = ({ password }) => {
           aria-label="Recipient's username"
           aria-describedby="basic-addon2"
           value={password}
+          ref={passwordref}
         />
         <div className="input-group-append">
-          <button className="btn btn-outline-secondary fs-4" type="button">
+          <button
+            className="btn btn-outline-secondary fs-4"
+            type="button"
+            onClick={copyPassToClipboard}
+          >
             Copy
           </button>
         </div>
