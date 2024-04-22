@@ -1,11 +1,16 @@
 import TodoItem from "./TodoItem";
 import React from "react";
 
-function TodoItems({ todoItems }) {
+function TodoItems({ todoItems, onDeleteClick }) {
   return (
     <>
       {todoItems.map((item, index) => (
-        <TodoItem todoName={item.name} todoDate={item.date} />
+        <TodoItem
+          key={index}
+          todoName={item.name}
+          todoDate={item.date}
+          onDeleteClick={onDeleteClick}
+        />
       ))}
     </>
   );
