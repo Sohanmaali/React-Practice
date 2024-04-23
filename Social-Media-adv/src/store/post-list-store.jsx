@@ -19,6 +19,8 @@ const PostListReducer = (currPostList, action) => {
     );
   } else if (action.type === "ADD_POST") {
     newPostList = [action.payload, ...currPostList];
+  } else if (action.type === "ADD_Initial_POSTS") {
+    newPostList = action.payload.posts;
   }
   return newPostList;
 };
@@ -42,6 +44,14 @@ const PostListProvider = ({ children }) => {
       },
     });
   };
+  const addInitialPosts = (posts) => {
+    return dispatchPostList({
+      type: "ADD_Initial_POSTS",
+      payload: {
+        posts: posts,
+      },
+    });
+  };
   const deletePost = (postId) => {
     return dispatchPostList({
       type: "DELETE_POST",
@@ -52,7 +62,9 @@ const PostListProvider = ({ children }) => {
   };
 
   return (
-    <PostList.Provider value={{ postList, addPost, deletePost }}>
+    <PostList.Provider
+      value={{ postList, addPost, deletePost, addInitialPosts }}
+    >
       {children}
     </PostList.Provider>
   );

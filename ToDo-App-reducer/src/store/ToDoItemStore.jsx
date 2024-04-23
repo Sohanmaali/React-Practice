@@ -43,7 +43,7 @@ const TodoItemsContextProvider = ({ children }) => {
         itemDate,
       },
     };
-    dispatchTodoItems(newItemAction);
+    return dispatchTodoItems(newItemAction);
   };
 
   const deleteItem = (itemName) => {
@@ -53,7 +53,7 @@ const TodoItemsContextProvider = ({ children }) => {
         itemName,
       },
     };
-    dispatchTodoItems(newItemAction);
+    return dispatchTodoItems(newItemAction);
   };
 };
 export default TodoItemsContextProvider;
