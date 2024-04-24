@@ -1,4 +1,6 @@
-const Sidebar = ({ selectedTab, setSelectedTab }) => {
+import { Link } from "react-router-dom";
+
+const Sidebar = () => {
   return (
     <>
       <div
@@ -6,7 +8,7 @@ const Sidebar = ({ selectedTab, setSelectedTab }) => {
         style={{ width: "280px" }}
       >
         <a
-          href="#"
+          href="/"
           className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
         >
           <span className="fs-4">Sidebar</span>
@@ -15,37 +17,28 @@ const Sidebar = ({ selectedTab, setSelectedTab }) => {
         <ul className="nav nav-pills flex-column mb-auto">
           <li
             className="nav-item"
-            onClick={() => {
-              setSelectedTab("Home");
-            }}
+            // onClick={() => {
+            //   setSelectedTab("Home");
+            // }}
           >
-            <a
-              href="#"
-              className={`nav-link ${selectedTab === "Home" && "active"}`}
-              aria-current="page"
-            >
+            <Link to="/" className="nav-link " aria-current="page">
               <svg className="bi pe-none me-2" width="16" height="16">
                 <use xlinkHref="#home"></use>
               </svg>
               Home
-            </a>
+            </Link>
           </li>
           <li
-            onClick={() => {
-              setSelectedTab("Create Post");
-            }}
+          // onClick={() => {
+          //   setSelectedTab("Create Post");
+          // }}
           >
-            <a
-              href="#"
-              className={`nav-link link-body-emphasis ${
-                selectedTab === "Create Post" && "active"
-              }`}
-            >
+            <Link to="/create-post" className="nav-link link-body-emphasis ">
               <svg className="bi pe-none me-2" width="16" height="16">
                 <use xlinkHref="#speedometer2"></use>
               </svg>
               Create Post
-            </a>
+            </Link>
           </li>
           {/* <li>
             <a href="#" className="nav-link link-body-emphasis">
