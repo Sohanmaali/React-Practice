@@ -1,26 +1,29 @@
+import React from "react";
 import { useContext } from "react";
-import { TodoContext } from "../context/TodoContext";
+import { todoContext } from "../context/TodoContext";
 import { useState } from "react";
+import { useRef } from "react";
 
 function TodoForm() {
+  const { addTodo } = useContext(todoContext);
   const [todo, setTodo] = useState("");
-  const { addTodo } = useContext(TodoContext);
 
+  const todoTextElement = useRef();
+  
   const add = (e) => {
     e.preventDefault();
-    if (!todo) return;
-    addTodo({ todo, completed: false });
-    setTodo("");
-  };
 
+    addTodo(todoTextElement.current.value);
+    todoTextElement.current.value ="";
+  };
   return (
     <form className="flex" onSubmit={add}>
       <input
         type="text"
         placeholder="Write Todo..."
         className="w-full border border-black/10 rounded-l-lg px-3 outline-none duration-150 bg-white/20 py-1.5"
-        value={todo}
-        onChange={(e) => setTodo(e.target.value)}
+        value={todo.todoText}
+        ref={todoTextElement}
       />
       <button
         type="submit"
