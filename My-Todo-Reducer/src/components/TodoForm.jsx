@@ -1,28 +1,34 @@
 import React from "react";
 import { useContext } from "react";
-import { todoContext } from "../context/TodoContext";
-import { useState } from "react";
+import { TodoContext } from "../context/TodoContext";
 import { useRef } from "react";
 
 function TodoForm() {
-  const { addTodo } = useContext(todoContext);
-  // const { addTodo } = useCounter();
-  const [todo, setTodo] = useState("");
-
+  const { todos, dispatcher } = useContext(TodoContext);
+  const context = useContext(TodoContext);
   const todoTextElement = useRef();
+  // console.log(todos);
 
   const add = (e) => {
     e.preventDefault();
-    addTodo(todoTextElement.current.value);
-    todoTextElement.current.value = "";
+    dispatcher({
+      type: "ADD_ITEM",
+      payload: {
+        id: Date.now().toString(),
+        todoText: todoTextElement.current.value,
+      },
+    });
+
+    todoTextElement.current.value = ""; // Clear input after adding todo
   };
+
   return (
     <form className="flex" onSubmit={add}>
       <input
         type="text"
         placeholder="Write Todo..."
         className="w-full border border-black/10 rounded-l-lg px-3 outline-none duration-150 bg-white/20 py-1.5"
-        value={todo.todoText}
+        // value={todos.todoText}
         ref={todoTextElement}
       />
       <button

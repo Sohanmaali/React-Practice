@@ -39,14 +39,6 @@ const PostListProvider = ({ children }) => {
       payload: post,
     });
   };
-  // const addInitialPosts = (posts) => {
-  //   return dispatchPostList({
-  //     type: "ADD_Initial_POSTS",
-  //     payload: {
-  //       posts: posts,
-  //     },
-  //   });
-  // };
   const deletePost = (postId) => {
     return dispatchPostList({
       type: "DELETE_POST",
@@ -56,15 +48,6 @@ const PostListProvider = ({ children }) => {
     });
   };
 
-  // useEffect(() => {
-  //   setfetch(true);
-  //   const controller = new AbortController();
-  //   const signal = controller.signal;
-
-  //   return () => {
-  //     controller.abort();
-  //   };
-  // }, []);
   return (
     <PostList.Provider value={{ postList, addPost, deletePost }}>
       {children}

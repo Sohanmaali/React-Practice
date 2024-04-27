@@ -12,7 +12,7 @@ function Todos() {
         {todos.map((todo) => (
           <div>
             <li key={todo.id}>
-              {todo.text}{" "}
+              {todo.text}
               <button
                 className="inline-flex w-8 h-8 rounded-lg text-sm border border-black/10 justify-center items-center bg-gray-50 hover:bg-gray-100 shrink-0"
                 onClick={() => {
@@ -24,7 +24,6 @@ function Todos() {
             </li>
           </div>
         ))}
-        {/* ----------------------------------- */}
       </div>
     </>
   );
