@@ -1,11 +1,11 @@
 import { Link, NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import LogoutBtn from "./LogoutBtn";
 // import { LogoutBtn } from "../Header/LogoutBtn.jsx";
 
 export default function Header() {
-  const authStatus =  useSelector((state) => state.auth.status);
+  const authStatus = useSelector((state) => state.auth.status);
   const navigate = useNavigate();
   const navItems = [
     {
@@ -91,7 +91,7 @@ export default function Header() {
               )}
               {authStatus && (
                 <li>
-                  <LogoutBtn/>
+                  <LogoutBtn />
                 </li>
               )}
             </ul>
